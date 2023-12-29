@@ -8,90 +8,8 @@ Tags: photographie
 Text Domain: motaphoto
 */
 
-.burger{
-    width:42px;
-    height:24px;
-    cursor:pointer;
-    position:absolute;
-    right:5px;
-}
-.burger span {
-    width:100%;
-    height:2px;
-    background-color:black;
-    display:block;
-    position:absolute;
-    top:50%;
-    transform: translateY(-50%);
-    transition: background-color 0.5s ease-in-out;
-}
-.burger span::before, .burger span::after{
-    content:'';
-    position:absolute;
-    width:100%;
-    height:2px;
-    background-color:black;
-    transition: transform 0.5s ease-in-out;
-}
-.burger span::before{
-    transform: translateY(-10px);
-}
-.burger span::after{
-    transform: translateY(10px);
-}
 
-.burger.active span{
-    background-color: transparent;
-    z-index:2;
-}
-.burger.active span::before{
-    transform: translateY(0px) rotateZ(45deg);
-}
-.burger.active span::after{
-    transform: translateY(0px) rotateZ(-45deg);
-}
-
-.menu-burger{
-    width:100px;
-    height:100px;
-    visibility:hidden;
-    position:absolute;
-
-}
-
-.menu-burger.active{
-    height:100%;
-    width:100%;
-    visibility:visible;
-    position:absolute;
-    background-color:#E00000;
-    transition: background-color 0.5s ease-in-out;
-    z-index:0;
-    margin-top:30px;
-}
-
-#menu-primary-1 {
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-}
-
-#menu-primary-1 li a {
-    color:white;
-    text-transform: uppercase;
-    font-size:44px;
-    padding: 15px 30px 15px 0px;
-    text-align:center;
-}
-
-.menu-burger.active .menu-primary-container{
-    width:100%;
-    height:500px;
-    padding-bottom:150px;
-}
-
-/* Installation en local des polices et code CSS correspondant */ 
+/* ------------------------ Installation en local des polices et code CSS correspondant ---------------------- */ 
 @font-face {
     font-family: 'Space Mono';
     src: url('assets/fonts/SpaceMono-Regular.woff2') format("woff2");
@@ -157,7 +75,7 @@ p {
 }
 
 
-/* Code CSS pour la partie Header */ 
+/* --------------------- Code CSS pour la partie Header ------------------------- */ 
 
 .menu-primary-container{
 display: flex;
@@ -211,7 +129,93 @@ header div{
     padding-left:50px;
 }
 
-/* Code CSS pour le footer */
+.burger{
+    width:42px;
+    height:24px;
+    cursor:pointer;
+    position:absolute;
+    right:5px;
+}
+.burger span {
+    width:100%;
+    height:2px;
+    background-color:black;
+    display:block;
+    position:absolute;
+    top:50%;
+    transform: translateY(-50%);
+    transition: background-color 0.5s ease-in-out;
+}
+.burger span::before, .burger span::after{
+    content:'';
+    position:absolute;
+    width:100%;
+    height:2px;
+    background-color:black;
+    transition: transform 0.5s ease-in-out;
+}
+.burger span::before{
+    transform: translateY(-10px);
+}
+.burger span::after{
+    transform: translateY(10px);
+}
+
+.burger.active span{
+    background-color: transparent;
+    z-index:2;
+}
+.burger.active span::before{
+    transform: translateY(0px) rotateZ(45deg);
+}
+.burger.active span::after{
+    transform: translateY(0px) rotateZ(-45deg);
+}
+
+.menu-burger{
+    width:100px;
+    height:100px;
+    visibility:hidden;
+    position:absolute;
+    background-color:white;
+    transition: background-color 0.5s ease-in-out;
+}
+
+.menu-burger.active{
+    height:100%;
+    width:100%;
+    visibility:visible;
+    position:absolute;
+    background-color:#E00000;
+    transition: background-color 1s ease-in-out;
+    z-index:0;
+    margin-top:30px;
+}
+
+#menu-primary-1 {
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+
+#menu-primary-1 li a {
+    color:white;
+    text-transform: uppercase;
+    font-size:44px;
+    padding: 15px 30px 15px 0px;
+    text-align:center;
+}
+
+.menu-burger.active .menu-primary-container{
+    width:100%;
+    height:500px;
+    padding-bottom:150px;
+}
+
+
+
+/* -------------------------- Code CSS pour le footer --------------------------- */
 
 .footer {
     display:flex;
@@ -230,8 +234,145 @@ header div{
     text-transform: uppercase;
 }
 
-/* Responsive design */
+.footer-item {
+    display:flex;
+    flex-direction:row;
+    justify-content:center;
+    align-items:center;
+}
+
+.footer-item p {
+    text-align:center;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none;
+    position: fixed; 
+    flex-direction:row;
+    justify-content:center;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.805);
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 75px;
+    padding: 20px;
+    width: 500px;
+    height: 100%;
+    border:5px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items:center;
+    overflow:hidden;
+}
+
+.animate__slideInRight{
+    animation-duration:1s;
+}
+
+.animate__slideOutRight{
+    animation-duration:1s;
+}
+
+.img-modale{
+    height: 100px;
+}
+
+/* The Close Button */
+.close {
+    color: black;
+    float: right;
+    font-size: 30px;
+    font-weight: normal;
+    font-family: 'Space Mono';
+}
+
+.close-modale{
+    padding-bottom: 20px;
+    width: 90%;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    font-weight:700;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.label-form {
+    border:none;
+    background-color:none;
+}
+
+
+input, textarea{
+    border-radius:10px;
+    border:1px solid black;
+    height:40px;
+    width:260px;
+}
+
+textarea{
+    height:210px;
+}
+
+button{
+    background-color:#D8D8D8!important;
+    border:none;
+    width:260px;
+}
+.submit-btn{
+    background-color:#D8D8D8;
+    width:260px;
+    height:50px;
+    border:none;
+    border-radius:5px;
+}
+.form{
+    font-family:'Space Mono';
+    text-transform: uppercase;
+    padding-top:10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+label{
+    padding-bottom:5px;
+}
+.form ul{
+    padding:0px;
+}
+
+.form ul li{
+    display:flex;
+}
+
+/* ----------------------------- Responsive design --------------------------------- */
 @media screen and (max-width: 480px) {
+    .modal-content {
+        margin:0px;
+        padding:15px;
+    }
+
+    .modal{
+        z-index: 2;
+    }
+
+    .form{
+        padding-top:0px;
+    }
+
     h1 {
         font-size:27.59px;
     }
@@ -251,6 +392,20 @@ header div{
 
     .logo {
         padding-left:15px;
+    }
+
+    .footer-item a {
+        text-align:center;
+    }
+    
+}
+
+@media screen and (max-width: 600px) {
+    #menu-item-13 a, #menu-item-23 a, #menu-item-10 a {
+        font-size:12px;
+    }
+    .menu-primary-container{
+        padding-right:10px;
     }
 }
 

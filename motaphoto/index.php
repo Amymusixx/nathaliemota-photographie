@@ -6,5 +6,6 @@
 <h3>Titre h3</h3>
 <p class="description-photo">Description photo</p>
 <p>Paragraphe</p>
+
 </main>
 <?php get_footer(); ?>

@@ -1,4 +1,7 @@
-<?php wp_footer() ?>
+<?php 
+    include("template-parts/modale.php"); ?>
+    <?php wp_footer() ?>
+
 <div class='footer'>
     <div class='footer-item'>
         <a href="http://localhost:8888/nathaliemota-photographie/mentions-legales/">Mentions Légales</a>
@@ -10,5 +13,7 @@
         <p>Tous droits réservés</p>
     </div>
 </div>
+
+
 </body>
 </html>

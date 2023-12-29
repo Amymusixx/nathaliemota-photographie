@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Motaphoto</title>
     <meta name="description" content="Site pour la photographe Nathalie Mota"> 
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
     <?php wp_head() ?>
 </head>
 <body>
