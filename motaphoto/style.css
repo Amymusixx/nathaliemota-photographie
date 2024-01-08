@@ -74,21 +74,34 @@ p {
     font-size:14px;
 }
 
+body{
+    margin:0px;
+}
+/* ------------------------------------ Code CSS pour la partie Header ---------------------------------- */ 
 
-/* --------------------- Code CSS pour la partie Header ------------------------- */ 
-
-.menu-primary-container{
-display: flex;
+.header-box{
+    width: 100%;
+    display: flex;
     flex-direction: row;
     justify-content: center;
+    align-items:center;
+    margin: 0 100px 0 50px;
+}
+
+.menu-primary-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
     align-items: center;
     padding-right:50px;
+    width:100%;
 }
 
 .menu-primary-container ul {
     display:flex;
     flex-direction:row;
     font-family:'Space Mono';
+    justify-content:flex-end;
 }
 
 .menu-primary-container ul li {
@@ -103,9 +116,8 @@ display: flex;
     padding: 0px 15px 0px 15px;
 }
 
-
 header {
-    height:40px;
+    height:65px;
     width:100%;
     background-color: white;
     display:flex;
@@ -114,15 +126,8 @@ header {
     box-shadow: 22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042);
 }
 
-header div{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
 .logo {
     max-width:200px;
-    position:fixed;
     display:flex;
     flex-direction:row;
     align-items:center;
@@ -134,7 +139,7 @@ header div{
     height:24px;
     cursor:pointer;
     position:absolute;
-    right:5px;
+    right:40px;
 }
 .burger span {
     width:100%;
@@ -189,7 +194,7 @@ header div{
     background-color:#E00000;
     transition: background-color 1s ease-in-out;
     z-index:0;
-    margin-top:30px;
+    top: 65px;
 }
 
 #menu-primary-1 {
@@ -206,6 +211,9 @@ header div{
     padding: 15px 30px 15px 0px;
     text-align:center;
 }
+a:hover{
+    font-weight:700
+}
 
 .menu-burger.active .menu-primary-container{
     width:100%;
@@ -215,7 +223,7 @@ header div{
 
 
 
-/* -------------------------- Code CSS pour le footer --------------------------- */
+/* ------------------------------------ Code CSS pour le footer --------------------------------------- */
 
 .footer {
     display:flex;
@@ -245,7 +253,7 @@ header div{
     text-align:center;
 }
 
-/* The Modal (background) */
+/* --------------------------------------- Fenêtre modale du menu ----------------------------------------- */
 .modal {
     display: none;
     position: fixed; 
@@ -260,7 +268,6 @@ header div{
     background-color: rgba(0, 0, 0, 0.805);
 }
 
-/* Modal Content/Box */
 .modal-content {
     background-color: #fefefe;
     margin: 75px;
@@ -273,21 +280,22 @@ header div{
     justify-content: flex-start;
     align-items:center;
     overflow:hidden;
+    opacity: 1;
 }
 
 .animate__slideInRight{
     animation-duration:1s;
 }
 
-.animate__slideOutRight{
-    animation-duration:1s;
+.animation-fade-out{
+opacity: 0;
+transition: opacity 2s;
 }
 
 .img-modale{
     height: 100px;
 }
 
-/* The Close Button */
 .close {
     color: black;
     float: right;
@@ -328,16 +336,24 @@ textarea{
 
 button{
     background-color:#D8D8D8!important;
+    transition: background-color 0.3s ease-in-out;
     border:none;
     width:260px;
 }
 .submit-btn{
     background-color:#D8D8D8;
+    transition: background-color 0.3s ease-in-out;
     width:260px;
     height:50px;
     border:none;
     border-radius:5px;
 }
+
+button:hover{
+    background-color:black;
+    transition: background-color 0.3s ease-in-out;
+}
+
 .form{
     font-family:'Space Mono';
     text-transform: uppercase;
@@ -358,8 +374,109 @@ label{
     display:flex;
 }
 
+/* ---------------------------------- Page single.php (affichage d'une photo) ------------------------- */
+.main-content{
+    display:flex;
+    flex-direction:column;
+    margin:50px 100px 50px 100px;
+}
+
+.photo-single{
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+    align-items:flex-end;
+}
+
+.photo-img{
+    height:fit-content;
+    width:50%;
+    display:flex;
+    flex-direction:row;
+    justify-content:flex-end;
+    align-items: flex-end;
+}
+
+.photo-img img{
+    height:fit-content;
+    width:36vw;
+    object-fit:contain;
+}
+
+.photo-infos{
+    width:50%;
+    border-bottom:solid black 1px;
+}
+
+.photo-fields{
+    max-width:300px;
+}
+
+.photo-contact{
+    border-bottom:1px solid black;
+    height:118px;
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+}
+
+.photo-title{
+    line-height: 95%;
+    margin:0px;
+}
+
+.contact{
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+    align-items:center;
+
+}
+.gallery{
+    width:50%;
+}
+#contact-btn{
+    border-radius:5px;
+    margin: 0 20px 0 20px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+button:hover{
+    background-color:black !important;
+    color:white;
+    transition: background-color 0.3s ease-in-out;
+    cursor:pointer;
+}
+
+#div-contact{
+    display: flex;
+    width: 50%;
+}
+
+.description-photo a{
+    color:black !important;
+}
+
+p.description-photo{
+    margin: 30px 0 30px 0;
+}
+
 /* ----------------------------- Responsive design --------------------------------- */
+
 @media screen and (max-width: 480px) {
+    .footer{
+        flex-direction:column;
+        height:209px;
+    }
+
+    .footer-item a, .footer-item p {
+        text-align:center;
+        font-size:16px;
+    }
+
+    div.footer-item{
+        height:30px;
+    }
     .modal-content {
         margin:0px;
         padding:15px;
@@ -382,30 +499,86 @@ label{
     #menu-primary {
         visibility:hidden;
     }
+    .menu-primary-container{
+        justify-content: center;
+    }
     header {
-        height:30px;
+        height:65px;
         width:100%;
         display:flex;
         flex-direction:row;
         justify-content:space-evenly;
     }
 
+    .header-box{
+        justify-content: flex-start;
+    }
     .logo {
-        padding-left:15px;
+        left:15px;
     }
 
-    .footer-item a {
-        text-align:center;
+    /* Responsive de la page single.php */
+    .photo-single {
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+        }
+    .main-content{
+        margin:0px;
     }
-    
+    .photo-infos {
+        width: 100%;
+        border-bottom: solid black 1px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;}
+    .photo-img img{
+        width: 65vw;
+    }
+    .photo-img{
+        width:auto;
+        margin: 30px 0 30px 0;
+    }
+    .contact, .photo-contact{
+        flex-direction:column;
+    }
+    .contact{
+        align-items: flex-start;
+    }
+    #contact-btn{
+        margin:0px;
+    }
+    #div-contact{
+        width: 100%;
+    }
 }
-
 @media screen and (max-width: 600px) {
+    
     #menu-item-13 a, #menu-item-23 a, #menu-item-10 a {
         font-size:12px;
     }
     .menu-primary-container{
         padding-right:10px;
+    }
+    .logo {
+        padding-left:15px;
+    }
+    .footer-item a, .footer-item p {
+        text-align:center;
+        font-size:14px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    h2 {
+font-size:50px;
+    }
+    .header-box{
+        margin:0px;
+    }
+    .logo{
+        max-width:150px;
     }
 }
 

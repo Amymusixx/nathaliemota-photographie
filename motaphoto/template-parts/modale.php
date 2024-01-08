@@ -1,6 +1,11 @@
-
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+      $(document).ready(function(){
+        $("#ref").val("<?php the_field('reference');?>");
+      });
+    </script>
 <!-- The Modal -->
-<div id="myModal" class="modal animate__slideInRight">
+<div id="myModal" class="modal">
 
   <!-- Modal content -->
   <div class="modal-content">

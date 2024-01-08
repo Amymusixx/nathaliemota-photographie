@@ -14,7 +14,8 @@
 </head>
 <body>
 <header>
-  <div>
+  <div class="header-box">
+<div>
     <img class='logo' src= <?php echo get_stylesheet_directory_uri() . '/assets/images/logo.png' ?>>
 </div>
 <?php 
@@ -30,6 +31,7 @@ wp_nav_menu([
 wp_nav_menu([
     'motaphoto' => 'primary',
 ]); ?>
+</div>
 </div>
 
 

@@ -1,4 +1,5 @@
 console.log('Hello World');
+"https://code.jquery.com/jquery-3.4.1.min.js"
 
 const burger = document.querySelector(".burger");
 const menuBurger = document.querySelector('.menu-burger');
@@ -11,15 +12,11 @@ burger.addEventListener('click', () => {
 });
 
 
-// Get the modal
+// Récupérer les éléments (la modale, le bouton de contact, bouton d'ouverture, span de fermeture)
 var modal = document.getElementById('myModal');
-
-// Get the button that opens the modal
+var contactBtn = document.getElementById('contact-btn');
 const contactMobile = document.getElementsByClassName('menu-item-13')[1];
 const contact = document.getElementById('menu-item-13');
-
-
-// Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks on the button, open the modal
@@ -28,6 +25,12 @@ contactMobile.onclick = function() {
 }
 contact.onclick = function() {
     modal.style.display = "flex";
+    modal.classList.add('animate__slideInRight');
+}
+
+contactBtn.onclick = function() {
+    modal.style.display = "flex";
+    modal.classList.add('animate__slideInRight');
 }
 
 // When the user clicks on <span> (x), close the modal
