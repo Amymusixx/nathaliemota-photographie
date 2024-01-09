@@ -83,9 +83,9 @@ body{
     width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     align-items:center;
-    margin: 0 100px 0 50px;
+    padding-right:50px;
 }
 
 .menu-primary-container{
@@ -93,7 +93,6 @@ body{
     flex-direction: row;
     justify-content: flex-end;
     align-items: center;
-    padding-right:50px;
     width:100%;
 }
 
@@ -121,8 +120,9 @@ header {
     width:100%;
     background-color: white;
     display:flex;
-    flex-direction:row;
+    flex-direction:column;
     justify-content:space-between;
+    align-items:flex-end;
     box-shadow: 22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042);
 }
 
@@ -131,12 +131,12 @@ header {
     display:flex;
     flex-direction:row;
     align-items:center;
-    padding-left:50px;
+    padding-left:150px;
 }
 
 .burger{
     width:42px;
-    height:24px;
+    height:65px;
     cursor:pointer;
     position:absolute;
     right:40px;
@@ -181,18 +181,13 @@ header {
     width:100px;
     height:100px;
     visibility:hidden;
-    position:absolute;
-    background-color:white;
-    transition: background-color 0.5s ease-in-out;
 }
 
 .menu-burger.active{
     height:100%;
     width:100%;
     visibility:visible;
-    position:absolute;
     background-color:#E00000;
-    transition: background-color 1s ease-in-out;
     z-index:0;
     top: 65px;
 }
@@ -217,11 +212,17 @@ a:hover{
 
 .menu-burger.active .menu-primary-container{
     width:100%;
-    height:500px;
-    padding-bottom:150px;
+    padding-bottom: 200px;
+    padding-top: 150px;
 }
 
+.animate__fadeInRight{
+  animation-duration:1s;
+}
 
+.header-burger{
+    height:fit-content;
+}
 
 /* ------------------------------------ Code CSS pour le footer --------------------------------------- */
 
@@ -270,7 +271,7 @@ a:hover{
 
 .modal-content {
     background-color: #fefefe;
-    margin: 75px;
+    margin: 0 75px 0 75px;
     padding: 20px;
     width: 500px;
     height: 100%;
@@ -375,6 +376,7 @@ label{
 }
 
 /* ---------------------------------- Page single.php (affichage d'une photo) ------------------------- */
+
 .main-content{
     display:flex;
     flex-direction:column;
@@ -418,6 +420,7 @@ label{
     display:flex;
     flex-direction:row;
     align-items:center;
+    justify-content: space-between;
 }
 
 .photo-title{
@@ -432,9 +435,7 @@ label{
     align-items:center;
 
 }
-.gallery{
-    width:50%;
-}
+
 #contact-btn{
     border-radius:5px;
     margin: 0 20px 0 20px;
@@ -461,35 +462,166 @@ p.description-photo{
     margin: 30px 0 30px 0;
 }
 
-/* ----------------------------- Responsive design --------------------------------- */
 
+/* ---------- Overlay d'une single photo ------------ */ 
+
+.post-thumbnail-overlay {
+    display: none;
+    width: fit-content;
+    height: auto;
+  }
+  
+  .post-thumbnail-overlay::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    opacity: 0; 
+  }
+  
+  .post-thumbnail:hover .post-thumbnail-overlay::before {
+    opacity: 1; 
+  }
+  
+  .post-thumbnail:hover .post-thumbnail-overlay{
+    display: block;
+  }
+  
+  .eye-overlay {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+  }
+  
+  .fullscreen-overlay {
+    cursor: pointer;
+    position: absolute;
+    top: 2%;
+    right: 2%;
+  }
+  
+  .overlay-category a {
+    position: absolute;
+    text-transform: uppercase;
+    color: white;
+    bottom: 2%;
+    right: 2%;
+  }
+  
+  .overlay-ref {
+    position: absolute;
+    text-transform: uppercase;
+    color: white;
+    bottom: 2%;
+    left: 2%;
+  }
+
+/* ------------------------------------- Navigation page single.php ------------------------------- */
+  
+  .prev a {
+    display: flex;
+    width: 26px;
+    height: 8px;
+    background: url("assets/images/arrow-left2.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+    margin-right: 2em;
+  }
+  
+  .next a {
+    display: flex;
+    background: url("assets/images/arrow-right2.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+    width: 26px;
+    height: 8px;
+  }
+  
+  .prev a,
+  .next a {
+    width: 26px;
+    height: 8px;
+  }
+
+.container-nav-photo{
+    width: 50%;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.photo-nav-photo {
+    height: 71px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+  
+  .arrows-nav-photo {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 15px;
+  }
+  
+  .arrow-nav-photo {
+    cursor: pointer;
+    font-size: 30px;
+    align-items: flex-end;
+    justify-content: flex-end;
+    width:35px;
+  }
+
+  /* Masque les miniatures par défaut, elles sont affichées au hover avec javascript */
+  .next-thumbnail, .prev-thumbnail {
+    display: none;
+  }
+  
+  .photo-nav-photo img {
+    object-fit: cover;
+    width: 80px;
+    height: 80px;
+  }
+  
+  .show-thumbnail {
+    display: block;
+  }
+
+/* ---------------------------------------- Responsive design ------------------------------------------- */
+
+/* Affichage mobile */ 
 @media screen and (max-width: 480px) {
     .footer{
         flex-direction:column;
         height:209px;
     }
-
     .footer-item a, .footer-item p {
         text-align:center;
         font-size:16px;
     }
-
     div.footer-item{
         height:30px;
     }
     .modal-content {
-        margin:0px;
+        margin: 0 75px 0 75px;
         padding:15px;
     }
-
     .modal{
         z-index: 2;
+        height:100%;
     }
-
     .form{
         padding-top:0px;
     }
-
     h1 {
         font-size:27.59px;
     }
@@ -506,10 +638,9 @@ p.description-photo{
         height:65px;
         width:100%;
         display:flex;
-        flex-direction:row;
-        justify-content:space-evenly;
+        flex-direction:column;
+        justify-content:flex-start;
     }
-
     .header-box{
         justify-content: flex-start;
     }
@@ -539,6 +670,7 @@ p.description-photo{
     .photo-img{
         width:auto;
         margin: 30px 0 30px 0;
+        content:url('/assets/images/Icon_fullscreen.png');
     }
     .contact, .photo-contact{
         flex-direction:column;
@@ -553,17 +685,19 @@ p.description-photo{
         width: 100%;
     }
 }
+
 @media screen and (max-width: 600px) {
-    
+    .logo {
+        max-width:150px;
+        padding-left:0px;
+    }
     #menu-item-13 a, #menu-item-23 a, #menu-item-10 a {
         font-size:12px;
     }
     .menu-primary-container{
         padding-right:10px;
     }
-    .logo {
-        padding-left:15px;
-    }
+    
     .footer-item a, .footer-item p {
         text-align:center;
         font-size:14px;
@@ -579,10 +713,11 @@ font-size:50px;
     }
     .logo{
         max-width:150px;
+        padding-left:100px;
     }
 }
 
-@media screen and (min-width: 480px) {
+@media screen and (min-width: 480px) { /* masque l'icône burger sur les affichage autres que mobile */
     .burger {
 visibility: hidden;
     }

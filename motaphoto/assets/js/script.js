@@ -3,12 +3,14 @@ console.log('Hello World');
 
 const burger = document.querySelector(".burger");
 const menuBurger = document.querySelector('.menu-burger');
-
 const modale = document.getElementById('modale');
+const header = document.getElementById('header');
 
 burger.addEventListener('click', () => {
     burger.classList.toggle('active');
     menuBurger.classList.toggle('active');
+    menuBurger.classList.toggle('animate__slideInRight');
+    header.classList.toggle('header-burger');
 });
 
 
@@ -22,20 +24,11 @@ var span = document.getElementsByClassName("close")[0];
 // When the user clicks on the button, open the modal
 contactMobile.onclick = function() {
     modal.style.display = "flex";
+    modal.classList.toggle('animate__slideInRight');
 }
 contact.onclick = function() {
     modal.style.display = "flex";
-    modal.classList.add('animate__slideInRight');
-}
-
-contactBtn.onclick = function() {
-    modal.style.display = "flex";
-    modal.classList.add('animate__slideInRight');
-}
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-    modal.style.display = "none";
+    modal.classList.toggle('animate__slideInRight');
 }
 
 // When the user clicks anywhere outside of the modal, close it
@@ -44,3 +37,32 @@ window.onclick = function(event) {
         modal.style.display = "none";
     }
 }
+
+contactBtn.onclick = function() {
+    modal.style.display = "flex";
+    modal.classList.toggle('animate__slideInRight');
+}
+
+
+
+const arrowLeft = document.querySelector('.arrow-left');
+const arrowRight = document.querySelector('.arrow-right');
+const nextThumb = document.querySelector('.next-thumbnail');
+const prevThumb = document.querySelector('.prev-thumbnail');
+
+
+arrowLeft.addEventListener('mouseover', () => {
+  prevThumb.classList.add('show-thumbnail');
+});
+
+arrowLeft.addEventListener('mouseout', () => {
+  prevThumb.classList.remove('show-thumbnail');
+});
+
+arrowRight.addEventListener('mouseover', () => {
+  nextThumb.classList.add('show-thumbnail');
+});
+
+arrowRight.addEventListener('mouseout', () => {
+  nextThumb.classList.remove('show-thumbnail');
+});
