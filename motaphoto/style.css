@@ -388,6 +388,7 @@ label{
     flex-direction:row;
     justify-content:space-between;
     align-items:flex-end;
+    gap:20px;
 }
 
 .photo-img{
@@ -401,17 +402,33 @@ label{
 
 .photo-img img{
     height:fit-content;
-    width:36vw;
+    width:40vw;
     object-fit:contain;
+}
+
+.post-thumbnail{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.post-thumbnail img{
+    object-fit: cover;
+    width: 37vw;
+    height: 50vh;
+}
+
+.container-galery{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }
 
 .photo-infos{
     width:50%;
     border-bottom:solid black 1px;
-}
-
-.photo-fields{
-    max-width:300px;
 }
 
 .photo-contact{
@@ -421,6 +438,20 @@ label{
     flex-direction:row;
     align-items:center;
     justify-content: space-between;
+}
+
+.linked-photos{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 15px;
+}
+
+.all-photos{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 20px;
 }
 
 .photo-title{
@@ -465,28 +496,49 @@ p.description-photo{
 
 /* ---------- Overlay d'une single photo ------------ */ 
 
-.post-thumbnail-overlay {
-    display: none;
-    width: fit-content;
-    height: auto;
-  }
-  
-  .post-thumbnail-overlay::before {
+.overlay-fullscreen{
+    display: block;
+    width: 40vw;
+    height: 80vh;
+    position: absolute;
+    opacity: 0;
+}
+
+.overlay-fullscreen::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 40vw;
+    height: 80vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+}
+
+.overlay {
+    display: block;
+    width: 37vw;
+    height: 50vh;
+    position: absolute;
+  }
+  
+  .overlay::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 37vw;
+    height: 50vh;
     background-color: rgba(0, 0, 0, 0.6);
     opacity: 0; 
   }
   
-  .post-thumbnail:hover .post-thumbnail-overlay::before {
+  .post-thumbnail:hover .overlay::before, .photo-img:hover .overlay-fullscreen::before, .photo-img:hover .fullscreen-overlay {
     opacity: 1; 
+    transition: opacity 0.3s ease-in-out;
   }
   
-  .post-thumbnail:hover .post-thumbnail-overlay{
+  .post-thumbnail:hover .overlay{
     display: block;
   }
   
@@ -497,6 +549,7 @@ p.description-photo{
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 1;
+    opacity:0;
   }
   
   .fullscreen-overlay {
@@ -504,6 +557,7 @@ p.description-photo{
     position: absolute;
     top: 2%;
     right: 2%;
+    opacity:0;
   }
   
   .overlay-category a {
@@ -512,6 +566,7 @@ p.description-photo{
     color: white;
     bottom: 2%;
     right: 2%;
+    opacity: 0;
   }
   
   .overlay-ref {
@@ -520,6 +575,12 @@ p.description-photo{
     color: white;
     bottom: 2%;
     left: 2%;
+    opacity: 0;
+  }
+
+  .post-thumbnail:hover .overlay-ref, .post-thumbnail:hover .overlay-category a, .post-thumbnail:hover .fullscreen-overlay, .post-thumbnail:hover .eye-overlay, .photo-img:hover .overlay-fullscreen{
+    opacity:1;
+    transition: opacity 0.3s ease-in-out;
   }
 
 /* ------------------------------------- Navigation page single.php ------------------------------- */
@@ -647,6 +708,13 @@ p.description-photo{
     .logo {
         left:15px;
     }
+    .post-thumbnail img{
+        width: 90vw;
+    height: 35vh;
+    }
+    .all-photos{
+        margin-top:0px;
+    }
 
     /* Responsive de la page single.php */
     .photo-single {
@@ -670,7 +738,6 @@ p.description-photo{
     .photo-img{
         width:auto;
         margin: 30px 0 30px 0;
-        content:url('/assets/images/Icon_fullscreen.png');
     }
     .contact, .photo-contact{
         flex-direction:column;
@@ -687,6 +754,9 @@ p.description-photo{
 }
 
 @media screen and (max-width: 600px) {
+    .post-thumbnail img{
+        height:35vh;
+    }
     .logo {
         max-width:150px;
         padding-left:0px;
@@ -702,9 +772,15 @@ p.description-photo{
         text-align:center;
         font-size:14px;
     }
+    
 }
 
 @media screen and (max-width: 800px) {
+    .post-thumbnail img, .overlay, .overlay::before{
+        width: 60vw;
+        height: 45vh;
+    }
+    
     h2 {
 font-size:50px;
     }
@@ -715,6 +791,11 @@ font-size:50px;
         max-width:150px;
         padding-left:100px;
     }
+    .container-galery{
+        flex-direction:column;
+        gap:15px;
+    }
+    
 }
 
 @media screen and (min-width: 480px) { /* masque l'icône burger sur les affichage autres que mobile */

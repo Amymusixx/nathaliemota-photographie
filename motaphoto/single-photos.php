@@ -13,11 +13,10 @@
     <p class='description-photo'>Année : <?php $post_date = get_the_date( 'Y' ); echo $post_date;?></p>
 </div>
     </div>
-    <div class="post-thumbnail photo-img">
-          <div>
+    <div class="photo-img">
             <?php the_post_thumbnail(); ?>
-          <div class="post-thumbnail-overlay">
-                <svg class="fullscreen-overlay" xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34" fill="none">
+            <figcaption class='overlay-fullscreen'>
+            <svg class="fullscreen-overlay" xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34" fill="none">
                     <circle cx="17" cy="17" r="17" fill="black"/>
                     <line x1="15" y1="10.5" x2="10" y2="10.5" stroke="white"/>
                     <line y1="-0.5" x2="5" y2="-0.5" transform="matrix(-1 8.74227e-08 8.74227e-08 1 15 24)" stroke="white"/>
@@ -28,10 +27,7 @@
                     <line x1="19" y1="23.5" x2="24" y2="23.5" stroke="white"/>
                     <line x1="24.5" y1="18" x2="24.5" y2="24" stroke="white"/>
                 </svg>
-                <span class="overlay-category"><?php the_terms( $post->ID, 'categorie'); ?></span>
-                <span class="overlay-ref"><?php the_field( 'reference' ); ?></span>
-            </div>
-        </div>
+        </figcaption>
         </div>
 </div>
 
@@ -67,9 +63,10 @@
     <div>
         <p class='description-photo'>Vous aimerez aussi<p>
     </div>
-    <div class='linked-photos-gallery'>
-    </div>
+    <?php 
+    include("template-parts/photo-block.php"); ?>
     <div>
+    <div class="all-photos"><button id='contact-btn'><p>Toutes les photos</p></button>
     </div>
 </div>
 
