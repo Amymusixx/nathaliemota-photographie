@@ -19,7 +19,7 @@ var modal = document.getElementById('myModal');
 var contactBtn = document.getElementById('contact-btn');
 const contactMobile = document.getElementsByClassName('menu-item-13')[1];
 const contact = document.getElementById('menu-item-13');
-var span = document.getElementsByClassName("close")[0];
+var span = document.getElementsByClassName("modal-close")[0];
 
 // When the user clicks on the button, open the modal
 contactMobile.onclick = function() {
@@ -29,6 +29,10 @@ contactMobile.onclick = function() {
 contact.onclick = function() {
     modal.style.display = "flex";
     modal.classList.toggle('animate__slideInRight');
+}
+
+span.onclick = function(){
+  modal.style.display = 'none';
 }
 
 // When the user clicks anywhere outside of the modal, close it
@@ -42,8 +46,6 @@ contactBtn.onclick = function() {
     modal.style.display = "flex";
     modal.classList.toggle('animate__slideInRight');
 }
-
-
 
 const arrowLeft = document.querySelector('.arrow-left');
 const arrowRight = document.querySelector('.arrow-right');

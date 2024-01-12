@@ -66,7 +66,7 @@
     <?php 
     include("template-parts/photo-block.php"); ?>
     <div>
-    <div class="all-photos"><button id='contact-btn'><p>Toutes les photos</p></button>
+    <div class="all-photos"><button id='contact-btn'><p><a href='http://localhost:8888/nathaliemota-photographie/'>Toutes les photos</a></p></button>
     </div>
 </div>
 

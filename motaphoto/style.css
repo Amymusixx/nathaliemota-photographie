@@ -8,8 +8,20 @@ Tags: photographie
 Text Domain: motaphoto
 */
 
+/*
 
-/* ------------------------ Installation en local des polices et code CSS correspondant ---------------------- */ 
+1. Installation en local des polices et configuration CSS
+2. Header - menu + menu-burger
+3. Footer
+4. Modale de contact
+5. Page Single.php (affichage d'un article)
+6. Overlays 
+    6.1 Overlay de la photo de l'article
+    6.2 Overlay des photos apprentées + block galerie d'accueil
+7. Navigation entre les photos
+8. Responsive
+
+ 1. ------------------------ Installation en local des polices et code CSS correspondant ---------------------- */ 
 @font-face {
     font-family: 'Space Mono';
     src: url('assets/fonts/SpaceMono-Regular.woff2') format("woff2");
@@ -77,7 +89,7 @@ p {
 body{
     margin:0px;
 }
-/* ------------------------------------ Code CSS pour la partie Header ---------------------------------- */ 
+/* 2. ------------------------------------ Code CSS pour la partie Header ---------------------------------- */ 
 
 .header-box{
     width: 100%;
@@ -224,7 +236,7 @@ a:hover{
     height:fit-content;
 }
 
-/* ------------------------------------ Code CSS pour le footer --------------------------------------- */
+/* 3. ------------------------------------ Code CSS pour le footer --------------------------------------- */
 
 .footer {
     display:flex;
@@ -254,12 +266,13 @@ a:hover{
     text-align:center;
 }
 
-/* --------------------------------------- Fenêtre modale du menu ----------------------------------------- */
+/* 4. --------------------------------------- Modale de contact ----------------------------------------- */
 .modal {
     display: none;
     position: fixed; 
     flex-direction:row;
     justify-content:center;
+    align-items:center;
     z-index: 1;
     left: 0;
     top: 0;
@@ -272,9 +285,9 @@ a:hover{
 .modal-content {
     background-color: #fefefe;
     margin: 0 75px 0 75px;
-    padding: 20px;
+    padding: 10px;
     width: 500px;
-    height: 100%;
+    height: fit-content;
     border:5px solid black;
     display: flex;
     flex-direction: column;
@@ -297,30 +310,25 @@ transition: opacity 2s;
     height: 100px;
 }
 
-.close {
-    color: black;
-    float: right;
-    font-size: 30px;
-    font-weight: normal;
-    font-family: 'Space Mono';
-}
-
-.close-modale{
-    padding-bottom: 20px;
-    width: 90%;
-}
-
-.close:hover,
-.close:focus {
-    color: black;
-    font-weight:700;
-    text-decoration: none;
+.modal-close {
     cursor: pointer;
-}
+    -webkit-text-stroke: 2px black;
+    position: absolute;
+    right: 45%;
+    bottom: 1%;
+    color: white;
+    font-size: 50px;
+    visibility: hidden;
+  }
+  
+  .modal-close:hover {
+    color: black;
+  }
 
 .label-form {
     border:none;
     background-color:none;
+    color:black;
 }
 
 
@@ -332,7 +340,7 @@ input, textarea{
 }
 
 textarea{
-    height:210px;
+    height:190px;
 }
 
 button{
@@ -347,7 +355,7 @@ button{
     width:260px;
     height:50px;
     border:none;
-    border-radius:5px;
+    border-radius:2px;
 }
 
 button:hover{
@@ -358,24 +366,26 @@ button:hover{
 .form{
     font-family:'Space Mono';
     text-transform: uppercase;
-    padding-top:10px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-label{
-    padding-bottom:5px;
-}
 .form ul{
     padding:0px;
+    margin:0px;
 }
 
 .form ul li{
     display:flex;
 }
 
-/* ---------------------------------- Page single.php (affichage d'une photo) ------------------------- */
+.form div p{
+    padding:0px;
+    margin:0px;
+}
+
+/* 5. ---------------------------------- Page single.php (affichage d'une photo) ------------------------- */
 
 .main-content{
     display:flex;
@@ -393,7 +403,6 @@ label{
 
 .photo-img{
     height:fit-content;
-    width:50%;
     display:flex;
     flex-direction:row;
     justify-content:flex-end;
@@ -468,9 +477,17 @@ label{
 }
 
 #contact-btn{
-    border-radius:5px;
+    border-radius:2px;
     margin: 0 20px 0 20px;
     transition: background-color 0.3s ease-in-out;
+}
+
+#contact-btn p a{
+    color:black;
+}
+
+#contact-btn:hover p a{
+    color:white;
 }
 
 button:hover{
@@ -494,27 +511,29 @@ p.description-photo{
 }
 
 
-/* ---------- Overlay d'une single photo ------------ */ 
+/* 6 ---------------------------------- Overlay d'une single photo ---------------------------------- */ 
 
+/* 6.1 Overlay de la photo de l'article */
 .overlay-fullscreen{
     display: block;
     width: 40vw;
-    height: 80vh;
+    height: 100%;
     position: absolute;
     opacity: 0;
 }
 
 .overlay-fullscreen::before {
-    content: '';
+   content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 40vw;
-    height: 80vh;
+    height: 100%;
     background-color: rgba(0, 0, 0, 0.6);
     opacity: 0;
 }
 
+/* 6.2 Overlay pour les photos apprentées et le block d'accueil */
 .overlay {
     display: block;
     width: 37vw;
@@ -583,7 +602,7 @@ p.description-photo{
     transition: opacity 0.3s ease-in-out;
   }
 
-/* ------------------------------------- Navigation page single.php ------------------------------- */
+/* 7. ------------------------------------- Navigation page single.php ------------------------------- */
   
   .prev a {
     display: flex;
@@ -657,7 +676,7 @@ p.description-photo{
     display: block;
   }
 
-/* ---------------------------------------- Responsive design ------------------------------------------- */
+/* 8. ---------------------------------------- Responsive design ------------------------------------------- */
 
 /* Affichage mobile */ 
 @media screen and (max-width: 480px) {
@@ -673,12 +692,16 @@ p.description-photo{
         height:30px;
     }
     .modal-content {
-        margin: 0 75px 0 75px;
-        padding:15px;
+        margin: 0px;
+        padding:0px;
+        width: 98vw;
+        height: 109vh;
     }
     .modal{
         z-index: 2;
-        height:100%;
+        height:fit-content;
+        width:auto;
+
     }
     .form{
         padding-top:0px;
@@ -715,7 +738,12 @@ p.description-photo{
     .all-photos{
         margin-top:0px;
     }
-
+.modal-close{
+    visibility:visible;
+}
+.submit-btn{
+    width: 200px;
+}
     /* Responsive de la page single.php */
     .photo-single {
         display: flex;
@@ -727,11 +755,12 @@ p.description-photo{
         margin:0px;
     }
     .photo-infos {
-        width: 100%;
-        border-bottom: solid black 1px;
+        border-bottom: none;
         display: flex;
         flex-direction: row;
-        justify-content: center;}
+        justify-content: center;
+        align-items: center;
+    }
     .photo-img img{
         width: 65vw;
     }
@@ -750,6 +779,9 @@ p.description-photo{
     }
     #div-contact{
         width: 100%;
+    }
+    .photo-contact{
+        border-top:1px solid black;
     }
 }
 
@@ -772,7 +804,9 @@ p.description-photo{
         text-align:center;
         font-size:14px;
     }
-    
+    .container-nav-photo{
+        visibility:hidden;
+    }
 }
 
 @media screen and (max-width: 800px) {
