@@ -1,11 +1,25 @@
 <?php get_header(); ?>
 
 <main>
-<h1>Titre h1</h1>
-<h2>Titre h2</h2>
-<h3>Titre h3</h3>
-<p class="description-photo">Description photo</p>
-<p>Paragraphe</p>
+
+<div class="hero-header">
+                <?php // Code PHP pour charger une photo en aléatoire sur la page d'accueil
+                $args = array(
+                    'post_type' => 'photos',
+                    'posts_per_page' => 1,
+                    'orderby' => 'rand',
+                );
+
+                $loop = new WP_Query($args);
+
+                while ($loop->have_posts()) : $loop->the_post();
+                    the_post_thumbnail();
+                endwhile;
+                wp_reset_postdata();
+                ?>
+                <div class='hero-header-container'><h2 class='hero-header-title'>Photographe Event</h2>
+            </div>
+            </div>
 
 </main>
 <?php get_footer(); ?>

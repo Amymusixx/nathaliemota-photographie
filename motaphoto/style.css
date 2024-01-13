@@ -200,7 +200,7 @@ header {
     width:100%;
     visibility:visible;
     background-color:#E00000;
-    z-index:0;
+    z-index:2;
     top: 65px;
 }
 
@@ -676,7 +676,49 @@ p.description-photo{
     display: block;
   }
 
-/* 8. ---------------------------------------- Responsive design ------------------------------------------- */
+/* 8. ---------------------------------------- Page d'accueil ------------------------------------------ */
+
+.hero-header{
+    width: 100%;
+    height: 140vh;
+}
+
+.hero-header img{
+    object-fit: cover;
+    width: 100%;
+    height: 70%;
+    object-position: center;
+}
+
+.hero-header-container {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .hero-header-title {
+    -webkit-text-stroke: 0.5px #ffffff;
+    color: transparent;
+    text-align: center;
+    margin: 0;
+    font-size: calc(1.3rem + 5vw);
+    font-style: italic;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: uppercase;
+  }
+
+
+
+
+
+
+
+
+
+/* ---------------------------------------- Responsive design ------------------------------------------- */
 
 /* Affichage mobile */ 
 @media screen and (max-width: 480px) {

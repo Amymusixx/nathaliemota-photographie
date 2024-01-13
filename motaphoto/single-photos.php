@@ -58,7 +58,6 @@
           </div>
 </div>
 </div>
-
 <div class='linked-photos'>
     <div>
         <p class='description-photo'>Vous aimerez aussi<p>
