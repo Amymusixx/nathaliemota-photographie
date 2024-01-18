@@ -232,6 +232,10 @@ a:hover{
   animation-duration:1s;
 }
 
+.animate__slideOutRight{
+    animation-duration:1s;
+}
+
 .header-burger{
     height:fit-content;
 }
@@ -268,7 +272,8 @@ a:hover{
 
 /* 4. --------------------------------------- Modale de contact ----------------------------------------- */
 .modal {
-    display: none;
+    display: flex;
+    visibility: hidden;
     position: fixed; 
     flex-direction:row;
     justify-content:center;
@@ -299,11 +304,6 @@ a:hover{
 
 .animate__slideInRight{
     animation-duration:1s;
-}
-
-.animation-fade-out{
-opacity: 0;
-transition: opacity 2s;
 }
 
 .img-modale{
@@ -349,7 +349,7 @@ button{
     border:none;
     width:260px;
 }
-.submit-btn{
+.submit-btn, .charger-plus{
     background-color:#D8D8D8;
     transition: background-color 0.3s ease-in-out;
     width:260px;
@@ -407,6 +407,7 @@ button:hover{
     flex-direction:row;
     justify-content:flex-end;
     align-items: flex-end;
+    width:50%;
 }
 
 .photo-img img{
@@ -476,7 +477,7 @@ button:hover{
 
 }
 
-#contact-btn{
+#contact-btn, .charger-plus{
     border-radius:2px;
     margin: 0 20px 0 20px;
     transition: background-color 0.3s ease-in-out;
@@ -680,14 +681,16 @@ p.description-photo{
 
 .hero-header{
     width: 100%;
-    height: 140vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .hero-header img{
-    object-fit: cover;
-    width: 100%;
-    height: 70%;
-    object-position: center;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
 }
 
 .hero-header-container {
@@ -712,16 +715,188 @@ p.description-photo{
 
 
 
+  /* filtres de recherche */
+  .filters {
+    padding: 30px 0 15px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 90%;
+  
+  select {
+      flex: 1;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #B8BBC2;
+      background-color: #ffffff;
+      cursor: pointer;
+      font-family: "PoppinsMedium";
+      font-size: 12px;
+      text-transform: uppercase;
+      margin: 0 10px;
+      }
+  }
+  
+  .filters form {
+      display: flex;
+      justify-content: space-between;
+      width:100%;
+  }
+  
+  .filter1 {
+      width: 50%;
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+  }
+  
+  .filter2 {
+      width: 25%;
+      display: flex;
+      justify-content: flex-end;
+  }
+
+    .photo-liste {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        width: 90%;
+        margin: auto;
+      }
+      .photo-liste .photo-container {
+        width: 45%;
+        margin: 0%;
+        margin-top: 20px;
+      }
+      
+.container-galery{
+    flex-wrap: wrap;
+}
+
+.page-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 35px;
+    gap: 20px;
+    width: 100%;
+}
+
+.publication-list{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
 
 
+/* Contenu main réalisé avec le page builder wordpress */
+.site-main{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
 
+.container{
+    margin: 20px;
+}
 
+.wp-block-heading, .wp-block-heading{
+    margin:20px;
+}
 
+/* Lightbox */
 
+#lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 9999;
+    animation: lightboxIn 0.5s;
+    display: none;
+  }
+  
+  .lightbox-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 70%;
+    height: 100%;
+    margin: 0 auto;
+    text-align: center;
+    color:white;
+  }
+  #lightbox-image {
+    width: 100%;
+    height: 100%;
+    max-height: 80%;
+    object-fit: contain;
+    animation: lightboxIn 0.5s;
+  }
+  .lightbox-content img {
+    max-width: 100%;
+  
+    animation: lightboxIn 0.5s;
+  }
+
+  #close-lightbox{
+    color: white;
+    font-family: 'Space Mono';
+    font-size: 24px;
+    position: absolute;
+    right: 35px;
+    top: 15px;
+  }
+
+  .lightbox-infos p{
+    color:white;
+    font-family:'Space Mono';
+  }
+
+  .lightbox-infos{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+    padding-bottom: 30px;
+  }
+
+  .photo-cat a{
+    color:white;
+  }
+
+  .arrow-prev{
+    position: absolute;
+    left: 15px;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .arrow-next{
+    position: absolute;
+    right: 15px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+  }
 /* ---------------------------------------- Responsive design ------------------------------------------- */
 
 /* Affichage mobile */ 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 600px) {
+    .photo-img img{
+        width: 65vw;
+    }
+    
     .footer{
         flex-direction:column;
         height:209px;
@@ -781,7 +956,7 @@ p.description-photo{
         margin-top:0px;
     }
 .modal-close{
-    visibility:visible;
+    visibility:hidden;
 }
 .submit-btn{
     width: 200px;
@@ -803,9 +978,7 @@ p.description-photo{
         justify-content: center;
         align-items: center;
     }
-    .photo-img img{
-        width: 65vw;
-    }
+    
     .photo-img{
         width:auto;
         margin: 30px 0 30px 0;
@@ -825,9 +998,11 @@ p.description-photo{
     .photo-contact{
         border-top:1px solid black;
     }
-}
+    .linked-photos{
+        justify-content: center;
+    align-items: center;
+    }
 
-@media screen and (max-width: 600px) {
     .post-thumbnail img{
         height:35vh;
     }
@@ -853,8 +1028,12 @@ p.description-photo{
 
 @media screen and (max-width: 800px) {
     .post-thumbnail img, .overlay, .overlay::before{
-        width: 60vw;
+        width: 50vw;
         height: 45vh;
+    }
+
+    .photo-img img{
+        width:35vw;
     }
     
     h2 {
@@ -871,10 +1050,13 @@ font-size:50px;
         flex-direction:column;
         gap:15px;
     }
+    .photo-liste{
+        justify-content:center;
+    }
     
 }
 
-@media screen and (min-width: 480px) { /* masque l'icône burger sur les affichage autres que mobile */
+@media screen and (min-width: 600px) { /* masque l'icône burger sur les affichage autres que mobile */
     .burger {
 visibility: hidden;
     }

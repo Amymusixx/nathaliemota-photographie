@@ -10,6 +10,9 @@
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
   />
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
     <?php wp_head() ?>
 </head>
 <body>
@@ -27,7 +30,7 @@ wp_nav_menu([
 <div class="burger">
   <span></span>
 </div>
-<div class="menu-burger">
+<div class="menu-burger animate__animated">
 <?php 
 wp_nav_menu([
     'motaphoto' => 'primary',

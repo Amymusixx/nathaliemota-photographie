@@ -5,7 +5,7 @@
       });
     </script>
 <!-- The Modal -->
-<div id="myModal" class="modal">
+<div id="myModal" class="modal animate__animated">
 
   <!-- Modal content -->
   <div class="modal-content">

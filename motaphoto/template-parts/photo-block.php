@@ -1,33 +1,11 @@
-<?php
 
-$category= '';
-$terms = get_the_terms( $post->ID, 'categorie');
-if ( $terms && ! is_wp_error( $terms ) ) {
-    $category = $terms[0]->name;
-}
-$current_photo_id = get_the_ID();
-
-$args = array(
-    'post_type' => 'photos',
-    'posts_per_page' => 2,
-    'orderby' => 'rand',
-    'tax_query' => array(
-      array(
-          'taxonomy' => 'categorie',
-          'field' => 'slug',
-          'terms' => $category,
-      ),
-  ),
-  'post__not_in' => array($current_photo_id),
-);
-?>
 
 <?php $my_query = new WP_Query( $args ); ?>
 <div class="container-galery">
 <?php  
     if( $my_query->have_posts() ) : while( $my_query->have_posts() ) : $my_query->the_post();?>
     <?php $post_link = get_permalink(); // Récupère le lien de l'article ?>
-        <figure class="post-thumbnail">
+        <div><figure class="post-thumbnail">
             
             <?php if (has_post_thumbnail()) {
                 the_post_thumbnail();
@@ -54,7 +32,7 @@ $args = array(
                 <span class="overlay-category"><?php the_terms( $post->ID, 'categorie'); ?></span>
                 <span class="overlay-ref description-photo"><?php the_field( 'reference' ); ?></span>
         </figcaption>
-        </figure>  
+        </figure></div>
 <?php
     endwhile;
     else :

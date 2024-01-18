@@ -15,19 +15,6 @@
     </div>
     <div class="photo-img">
             <?php the_post_thumbnail(); ?>
-            <figcaption class='overlay-fullscreen'>
-            <svg class="fullscreen-overlay" xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34" fill="none">
-                    <circle cx="17" cy="17" r="17" fill="black"/>
-                    <line x1="15" y1="10.5" x2="10" y2="10.5" stroke="white"/>
-                    <line y1="-0.5" x2="5" y2="-0.5" transform="matrix(-1 8.74227e-08 8.74227e-08 1 15 24)" stroke="white"/>
-                    <line x1="9.5" y1="16" x2="9.5" y2="10" stroke="white"/>
-                    <line y1="-0.5" x2="6" y2="-0.5" transform="matrix(4.37114e-08 1 1 -4.37114e-08 10 18)" stroke="white"/>
-                    <line y1="-0.5" x2="5" y2="-0.5" transform="matrix(1 -8.74227e-08 -8.74227e-08 -1 19 10)" stroke="white"/>
-                    <line y1="-0.5" x2="6" y2="-0.5" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 24 16)" stroke="white"/>
-                    <line x1="19" y1="23.5" x2="24" y2="23.5" stroke="white"/>
-                    <line x1="24.5" y1="18" x2="24.5" y2="24" stroke="white"/>
-                </svg>
-        </figcaption>
         </div>
 </div>
 
@@ -62,6 +49,29 @@
     <div>
         <p class='description-photo'>Vous aimerez aussi<p>
     </div>
+    <?php
+
+$category= '';
+$terms = get_the_terms( $post->ID, 'categorie');
+if ( $terms && ! is_wp_error( $terms ) ) {
+    $category = $terms[0]->name;
+}
+$current_photo_id = get_the_ID();
+
+$args = array(
+    'post_type' => 'photos',
+    'posts_per_page' => 2,
+    'orderby' => 'rand',
+    'tax_query' => array(
+      array(
+          'taxonomy' => 'categorie',
+          'field' => 'slug',
+          'terms' => $category,
+      ),
+  ),
+  'post__not_in' => array($current_photo_id),
+);
+?>
     <?php 
     include("template-parts/photo-block.php"); ?>
     <div>
