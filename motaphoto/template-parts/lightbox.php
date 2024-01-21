@@ -11,7 +11,7 @@
             <p>Suivante</p>
         <img src= <?php echo get_stylesheet_directory_uri() . '/assets/images/arrow-right-white.png' ?>?>
         </div>
-        <img id="lightbox-image" src='<?php echo get_the_post_thumbnail_url(); ?>'
+        <img id="lightbox-image" src='<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>'
         
         <div class="lightbox-infos">
             <div><p class=" photo-ref">

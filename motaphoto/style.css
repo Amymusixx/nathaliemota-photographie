@@ -583,15 +583,27 @@ p.description-photo{
   .icon_fullscreen {
     cursor: pointer;
     position: absolute;
-    top: 7%;
-    right: 10%;
     opacity:1;
-    width:9% !important;
-    height:9% !important;
+    width:100% !important;
+    height:100% !important;
     z-index:1000;
     overflow: visible;
     opacity:0;
   }
+
+#button-fullscreen{
+cursor: pointer;
+    position: absolute;
+    opacity:1;
+    top: 0;
+    right: 15px;
+    background-color:none !important;
+    width:7% !important;
+    height:7% !important;
+    z-index:1000;
+    overflow: visible;
+    opacity:1;
+}
 
   .overlay-category {
     text-transform: uppercase;
@@ -875,6 +887,10 @@ p.description-photo{
         font-weight: 400;
         color: white;
     }
+}
+
+.fancybox__footer{
+    display:none;
 }
 
 .fancybox__caption{

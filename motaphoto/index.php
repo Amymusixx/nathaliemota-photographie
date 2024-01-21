@@ -104,11 +104,7 @@
 </div>
 </div>
 
-    <script>
-      Fancybox.bind('[data-fancybox]', {
-        // Your custom options
-      });    
-    </script>
+  
 
 </main>
 <?php get_footer(); ?>
