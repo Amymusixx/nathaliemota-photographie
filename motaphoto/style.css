@@ -344,23 +344,17 @@ textarea{
 }
 
 button{
-    background-color:#D8D8D8!important;
     transition: background-color 0.3s ease-in-out;
     border:none;
     width:260px;
 }
-.submit-btn, .charger-plus{
+.submit-btn, .charger-plus, #contact-btn{
     background-color:#D8D8D8;
     transition: background-color 0.3s ease-in-out;
     width:260px;
     height:50px;
     border:none;
     border-radius:2px;
-}
-
-button:hover{
-    background-color:black;
-    transition: background-color 0.3s ease-in-out;
 }
 
 .form{
@@ -483,6 +477,10 @@ button:hover{
     transition: background-color 0.3s ease-in-out;
 }
 
+#contact-btn:hover, .charger-plus:hover, .submit-btn:hover{
+background-color:black !important;
+}
+
 #contact-btn p a{
     color:black;
 }
@@ -492,7 +490,6 @@ button:hover{
 }
 
 button:hover{
-    background-color:black !important;
     color:white;
     transition: background-color 0.3s ease-in-out;
     cursor:pointer;
@@ -536,11 +533,14 @@ p.description-photo{
 
 /* 6.2 Overlay pour les photos apprentées et le block d'accueil */
 .overlay {
-    display: block;
+    display: flex;
     width: 37vw;
     height: 50vh;
     position: absolute;
-  }
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+}
   
   .overlay::before {
     content: '';
@@ -553,52 +553,63 @@ p.description-photo{
     opacity: 0; 
   }
   
-  .post-thumbnail:hover .overlay::before, .photo-img:hover .overlay-fullscreen::before, .photo-img:hover .fullscreen-overlay {
+  .post-thumbnail:hover .overlay::before, .photo-img:hover .overlay-fullscreen::before, .photo-img:hover .fullscreen-overlay, .overlay:hover .overlay-text {
     opacity: 1; 
     transition: opacity 0.3s ease-in-out;
   }
   
   .post-thumbnail:hover .overlay{
-    display: block;
+    display: flex;
   }
   
   .eye-overlay {
-    cursor: pointer;
+    width: auto !important ;
+    height: 9% !important ;
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1;
+    top: 40%;
+    left: 43%;
     opacity:0;
   }
-  
-  .fullscreen-overlay {
-    cursor: pointer;
+.overlay-text{
     position: absolute;
-    top: 2%;
-    right: 2%;
-    opacity:0;
-  }
-  
-  .overlay-category a {
-    position: absolute;
-    text-transform: uppercase;
     color: white;
-    bottom: 2%;
-    right: 2%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 90%;
+    opacity:0;
+}
+  
+  .icon_fullscreen {
+    cursor: pointer;
+    position: absolute;
+    top: 7%;
+    right: 10%;
+    opacity:1;
+    width:9% !important;
+    height:9% !important;
+    z-index:1000;
+    overflow: visible;
+    opacity:0;
+  }
+
+  .overlay-category {
+    text-transform: uppercase;
+    font-family:'Space Mono';
+    font-size:11px;
+    color: white;
     opacity: 0;
   }
   
-  .overlay-ref {
-    position: absolute;
+  .overlay-title{
     text-transform: uppercase;
+    font-family:'Space Mono';
+    font-size:11px;
     color: white;
-    bottom: 2%;
-    left: 2%;
     opacity: 0;
   }
 
-  .post-thumbnail:hover .overlay-ref, .post-thumbnail:hover .overlay-category a, .post-thumbnail:hover .fullscreen-overlay, .post-thumbnail:hover .eye-overlay, .photo-img:hover .overlay-fullscreen{
+  .post-thumbnail:hover .overlay-title, .post-thumbnail:hover .overlay-category, .post-thumbnail:hover .fullscreen-overlay, .post-thumbnail:hover .eye-overlay, .photo-img:hover .overlay-fullscreen, .post-thumbnail:hover .icon_fullscreen{
     opacity:1;
     transition: opacity 0.3s ease-in-out;
   }
@@ -808,93 +819,89 @@ p.description-photo{
     margin:20px;
 }
 
-/* Lightbox */
+/* --------------------------------------------- Lightbox -------------------------------------------------- */
 
-#lightbox {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.8);
-    z-index: 9999;
-    animation: lightboxIn 0.5s;
-    display: none;
-  }
-  
-  .lightbox-content {
+/* CSS de la lightbox */
+
+.fancybox-custom-layout .fancybox-bg {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.fancybox__toolbar.is-absolute{
+    visibility:hidden;
+}
+
+.is-horizontal .f-carousel__nav .f-button.is-next, .is-horizontal .fancybox__nav .f-button.is-next{
+    content: url("./assets/images/arrow-next.png");
+    width: 110px;
+    height: 20px;
+    border-radius:none;
+}
+
+.is-horizontal .f-carousel__nav .f-button.is-prev, .is-horizontal .fancybox__nav .f-button.is-prev{
+    content: url("./assets/images/arrow-previous.png");
+    width: 120px;
+    height: 20px;
+    border-radius:none;
+}
+
+/* Force les flèches à rester visibles */
+.f-button.is-next,
+.fancybox-button--arrow_left {
+  visibility: visible !important; /* Utilisez !important pour forcer l'affichage */
+  opacity: 1 !important; /* Utilisez !important pour forcer la pleine opacité */
+}
+
+.fancybox__nav{
+    --f-button-border-radius: 0px;
+    --f-button-hover-bg: none;
+    --f-button-active-bg:none;
+}
+
+/* supprime les boutons de navigation d'origine */
+.fancybox-navigation .fancybox-button {
+  height: 0px !important;
+} 
+
+.fancybox-caption__body {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    max-width: 70%;
-    height: 100%;
-    margin: 0 auto;
-    text-align: center;
-    color:white;
-  }
-  #lightbox-image {
-    width: 100%;
-    height: 100%;
-    max-height: 80%;
-    object-fit: contain;
-    animation: lightboxIn 0.5s;
-  }
-  .lightbox-content img {
-    max-width: 100%;
-  
-    animation: lightboxIn 0.5s;
-  }
-
-  #close-lightbox{
-    color: white;
-    font-family: 'Space Mono';
-    font-size: 24px;
-    position: absolute;
-    right: 35px;
-    top: 15px;
-  }
-
-  .lightbox-infos p{
-    color:white;
-    font-family:'Space Mono';
-  }
-
-  .lightbox-infos{
-    display: flex;
-    flex-direction: row;
-    width: 100%;
     justify-content: space-around;
-    padding-bottom: 30px;
-  }
-
-  .photo-cat a{
-    color:white;
-  }
-
-  .arrow-prev{
-    position: absolute;
-    left: 15px;
-    display: flex;
-    flex-direction: row-reverse;
     align-items: center;
-    gap: 10px;
-  }
+    text-transform: uppercase;
 
-  .arrow-next{
-    position: absolute;
-    right: 15px;
+    .fancybox-caption__body__title {
+        font-family: "poppinsregular";
+        font-size: 14px;
+        font-weight: 400;
+        color: white;
+    }
+}
+
+.fancybox__caption{
     display: flex;
     flex-direction: row;
-    align-items: center;
-    gap: 10px;
-  }
+    justify-content: space-around;
+    width: 50%;
+}
+
+/* transition de la lightbox */
+.fancybox-slide {
+  transition: opacity 0.3s ease-in-out;
+  opacity: 0;
+}
+
+.fancybox-slide--current {
+  opacity: 1;
+}
 /* ---------------------------------------- Responsive design ------------------------------------------- */
 
 /* Affichage mobile */ 
 @media screen and (max-width: 600px) {
     .photo-img img{
         width: 65vw;
+    }
+    .fancybox__toolbar.is-absolute{
+        visibility:visible;
     }
     
     .footer{
@@ -1052,6 +1059,10 @@ font-size:50px;
     }
     .photo-liste{
         justify-content:center;
+    }
+
+    .is-horizontal .f-carousel__nav .f-button.is-prev, .is-horizontal .f-carousel__nav .f-button.is-next, .is-horizontal .fancybox__nav .f-button.is-prev, .is-horizontal .fancybox__nav .f-button.is-next{
+        top:100%;
     }
     
 }

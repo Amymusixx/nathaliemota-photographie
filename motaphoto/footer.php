@@ -1,7 +1,6 @@
 <?php 
     include("template-parts/modale.php"); ?>
-    <?php 
-    include("template-parts/lightbox.php"); ?>
+
     <?php wp_footer() ?>
 
 <div class='footer'>

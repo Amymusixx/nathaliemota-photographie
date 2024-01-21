@@ -96,9 +96,6 @@
             $photos_id = get_the_ID();
             $photos_ids[] = $photo_id;
     
-    
-    
-    
         ?>
 </section>
 
@@ -107,8 +104,11 @@
 </div>
 </div>
 
-
-
+    <script>
+      Fancybox.bind('[data-fancybox]', {
+        // Your custom options
+      });    
+    </script>
 
 </main>
 <?php get_footer(); ?>

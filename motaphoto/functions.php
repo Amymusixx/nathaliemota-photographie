@@ -22,29 +22,47 @@ function register_my_menu() {
   register_nav_menu( 'primary', __( 'Primary Menu', 'motaphoto' ) );
 }
 
-function weichie_load_more() {
-    $ajaxposts = new WP_Query([
+// 7.4. bouton charger plus page accueil
+function load_more_photos() {
+
+  $args = array(
       'post_type' => 'photos',
       'posts_per_page' => 8,
-      'orderby' => 'rand',
+      'orderby' => 'date',
       'order' => 'DESC',
       'paged' => $_POST['paged'],
-    ]);
-  
-    $response = '';
-  
-    if($ajaxposts->have_posts()) {
-      while($ajaxposts->have_posts()) : $ajaxposts->the_post();
-        $response .= include("template-parts/photo-block.php");
+  );
+
+  $query = new WP_Query($args);
+
+$response = '';
+  $max_pages = $query->max_num_pages;
+
+
+  if ($query->have_posts()) {
+ob_start();
+      while ($query->have_posts()) :
+          $query->the_post();
+          $response .= include("template-parts/photo-block.php");
       endwhile;
-    } else {
-      $response = '';
-    }
-  
-    echo $response;
-    exit;
+       $output = ob_get_contents();
+  ob_end_clean();
   }
-  add_action('wp_ajax_weichie_load_more', 'weichie_load_more');
-  add_action('wp_ajax_nopriv_weichie_load_more', 'weichie_load_more');
+  else {
+      $response='';
+  }
+
+$result = [
+  'max' => $max_pages,
+  'html' => $output,
+];
+
+echo json_encode($result);
+exit;
+}
+
+add_action('wp_ajax_load_more_photos', 'load_more_photos');
+add_action('wp_ajax_nopriv_load_more_photos', 'load_more_photos');
+
 
   
