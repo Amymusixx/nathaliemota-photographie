@@ -5,10 +5,10 @@
 
 <div class='footer'>
     <div class='footer-item'>
-        <a href="http://localhost:8888/nathaliemota-photographie/mentions-legales/">Mentions Légales</a>
+    <a href="<?php echo get_permalink(30); ?>">Mentions légales</a>
     </div>
     <div class='footer-item'>
-        <a href="http://localhost:8888/nathaliemota-photographie/vie-privee/">Vie Privée</a>
+    <a href="<?php echo get_permalink(32); ?>">Vie privée</a>
     </div>
     <div class='footer-item'>
         <p>Tous droits réservés</p>

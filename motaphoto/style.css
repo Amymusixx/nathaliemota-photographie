@@ -19,7 +19,11 @@ Text Domain: motaphoto
     6.1 Overlay de la photo de l'article
     6.2 Overlay des photos apprentées + block galerie d'accueil
 7. Navigation entre les photos
-8. Responsive
+8. Page d'accueil   
+9. Les filtres de recherches 
+10. Pages standards wordpress
+11. Lightbox
+12. Responsive
 
  1. ------------------------ Installation en local des polices et code CSS correspondant ---------------------- */ 
 @font-face {
@@ -700,7 +704,7 @@ cursor: pointer;
     display: block;
   }
 
-/* 8. ---------------------------------------- Page d'accueil ------------------------------------------ */
+/* 8. ----------------------------------------------- Page d'accueil ---------------------------------------------------- */
 
 .hero-header{
     width: 100%;
@@ -736,9 +740,42 @@ cursor: pointer;
     text-transform: uppercase;
   }
 
+  .photo-liste {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 90%;
+    margin: auto;
+  }
+  .photo-liste .photo-container {
+    width: 45%;
+    margin: 0%;
+    margin-top: 20px;
+  }
+  
+.container-galery{
+flex-wrap: wrap;
+}
 
+.page-container{
+display: flex;
+flex-direction: column;
+align-items: center;
+padding-bottom: 35px;
+gap: 20px;
+width: 100%;
+}
 
-  /* filtres de recherche */
+.publication-list{
+display: flex;
+flex-wrap: wrap;
+flex-direction: row;
+justify-content: space-evenly;
+}
+
+  /* 9. -------------------------------------- Les filtres de recherche -------------------------------------- */
+
   .filters {
     padding: 30px 0 15px 0;
     display: flex;
@@ -779,42 +816,8 @@ cursor: pointer;
       justify-content: flex-end;
   }
 
-    .photo-liste {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        width: 90%;
-        margin: auto;
-      }
-      .photo-liste .photo-container {
-        width: 45%;
-        margin: 0%;
-        margin-top: 20px;
-      }
-      
-.container-galery{
-    flex-wrap: wrap;
-}
 
-.page-container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-bottom: 35px;
-    gap: 20px;
-    width: 100%;
-}
-
-.publication-list{
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: space-evenly;
-}
-
-
-/* Contenu main réalisé avec le page builder wordpress */
+/* 10. ------------------------- CSS des pages standards wordpress -------------------------- */
 .site-main{
     width: 100%;
     display: flex;
@@ -831,10 +834,7 @@ cursor: pointer;
     margin:20px;
 }
 
-/* --------------------------------------------- Lightbox -------------------------------------------------- */
-
-/* CSS de la lightbox */
-
+/* 11. --------------------------------------------- Lightbox -------------------------------------------------- */
 .fancybox-custom-layout .fancybox-bg {
     background: rgba(0, 0, 0, 0.8);
 }
@@ -860,8 +860,8 @@ cursor: pointer;
 /* Force les flèches à rester visibles */
 .f-button.is-next,
 .fancybox-button--arrow_left {
-  visibility: visible !important; /* Utilisez !important pour forcer l'affichage */
-  opacity: 1 !important; /* Utilisez !important pour forcer la pleine opacité */
+  visibility: visible !important;
+  opacity: 1 !important; 
 }
 
 .fancybox__nav{
@@ -870,7 +870,6 @@ cursor: pointer;
     --f-button-active-bg:none;
 }
 
-/* supprime les boutons de navigation d'origine */
 .fancybox-navigation .fancybox-button {
   height: 0px !important;
 } 
@@ -900,7 +899,6 @@ cursor: pointer;
     width: 50%;
 }
 
-/* transition de la lightbox */
 .fancybox-slide {
   transition: opacity 0.3s ease-in-out;
   opacity: 0;
@@ -909,7 +907,7 @@ cursor: pointer;
 .fancybox-slide--current {
   opacity: 1;
 }
-/* ---------------------------------------- Responsive design ------------------------------------------- */
+/* 12. ---------------------------------------- Responsive design ------------------------------------------- */
 
 /* Affichage mobile */ 
 @media screen and (max-width: 600px) {
