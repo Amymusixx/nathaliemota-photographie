@@ -29,7 +29,11 @@ global $wp_query;
 
             <div class="page-container">
 <!-- Filtrage des photos -->
+
+
+
 <section class="filters">
+
     <div>    
         <select id="category-filter">
             <option value="all">Catégories</option>

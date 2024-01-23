@@ -62,8 +62,6 @@ add_action('wp_ajax_load_more_photos', 'load_more_photos');
 add_action('wp_ajax_nopriv_load_more_photos', 'load_more_photos');
 
 
-
-
 //fonction filtres
 
     // Enregistrez l'action WordPress pour la requête AJAX
@@ -72,7 +70,7 @@ add_action('wp_ajax_nopriv_load_more_photos', 'load_more_photos');
     
     function filter_photos()
     {
-        $category = $_POST['categorie'];
+        $category = $_POST['category'];
         $format = $_POST['format'];
         $date_order = $_POST['date_order'];
     
@@ -81,7 +79,7 @@ add_action('wp_ajax_nopriv_load_more_photos', 'load_more_photos');
     
         $args = array(
             'post_type' => 'photos',
-            'posts_per_page' => 8,
+            'posts_per_page' => 16,
             // Ajoutez d'autres arguments selon les filtres sélectionnés
         );
     
@@ -114,11 +112,12 @@ add_action('wp_ajax_nopriv_load_more_photos', 'load_more_photos');
     
         // Boucle WordPress pour récupérer les données du custom post type
         if ($photo_query->have_posts()) :
+            
             while ($photo_query->have_posts()) : $photo_query->the_post();
                 // Incluez le template pour chaque photo
-                include("template-parts/photo-block.php"); 
+               include ("template-parts/overlay.php"); 
             endwhile;
-    
+     
         endif;
     
         wp_reset_postdata();

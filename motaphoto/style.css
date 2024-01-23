@@ -796,27 +796,11 @@ justify-content: space-evenly;
       margin: 0 10px;
       }
   }
-  
-  .filters form {
-      display: flex;
-      justify-content: space-between;
-      width:100%;
-  }
-  
-  .filter1 {
-      width: 50%;
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-  }
-  
-  .filter2 {
-      width: 25%;
-      display: flex;
-      justify-content: flex-end;
-  }
 
-
+  option{
+    background-color:red !important;
+  }
+  
 /* 10. ------------------------- CSS des pages standards wordpress -------------------------- */
 .site-main{
     width: 100%;

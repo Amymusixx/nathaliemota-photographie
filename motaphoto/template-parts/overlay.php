@@ -33,7 +33,7 @@
 <div class="overlay-text">
     <p class="overlay-title"><?php echo get_field('reference');?></p>
     <p class="overlay-category"><?php 
-        $categories = get_the_terms(get_the_ID(), 'categorie'); // get_the_ID() récupère l'ID du post actuel dans la boucle WordPress.
+        $categories = get_the_terms(get_the_ID(), 'categorie'); 
         foreach ( (array) $categories as $category ) {
         echo $category->name . ' '; 
     }
